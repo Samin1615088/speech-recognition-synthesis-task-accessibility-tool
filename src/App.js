@@ -11,6 +11,7 @@ import {
   Link
 } from "react-router-dom";
 import TexttoSpeech from "./components/TexttoSpeech/TexttoSpeech";
+import SpeechtoText from "./components/SpeechtoText/SpeechtoText";
 
 function App() {
   return (
@@ -46,6 +47,10 @@ function App() {
         <Switch>
           <Route path="/texttospeech">
             <TexttoSpeech />
+          </Route>
+
+          <Route path="/speechtotext">
+            <SpeechtoText />
           </Route>
 
           <Route path="/home">

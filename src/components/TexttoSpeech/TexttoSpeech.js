@@ -25,7 +25,7 @@ const TexttoSpeech = () => {
     };
     return (
         <section className="container h-75  mt-5 d-flex flex-column justify-content-center">
-            <div className="">
+            <div>
                 {
                     (!supported) ?
                         (<h3>Oh no, it looks like your browser donot support Speech Synthesis. Please download latest Chrome Browser</h3>)
