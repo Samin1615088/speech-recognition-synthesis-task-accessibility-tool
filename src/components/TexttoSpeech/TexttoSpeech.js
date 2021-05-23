@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useSpeechSynthesis } from 'react-speech-kit';
+import { UserTextData } from '../../App';
 
 const TexttoSpeech = () => {
-    const [textList, setTextList] = useState([]);
+    const { textList, setTextList } = useContext(UserTextData);
     const [text, setText] = useState('I am a robot');
     const [pitch, setPitch] = useState(1);
     const [rate, setRate] = useState(1);
@@ -110,7 +111,11 @@ const TexttoSpeech = () => {
                                 <button
                                     type="button"
                                     className="btn btn-success my-5 w-100"
-                                    onClick={() => speak({ text, voice, rate, pitch })}
+                                    onClick={() => {
+                                        speak({ text, voice, rate, pitch })
+                                        
+                                    }
+                                    }
                                 >
                                     Speak
                                 </button>

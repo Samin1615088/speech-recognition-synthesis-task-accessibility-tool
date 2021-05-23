@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle'
 
@@ -13,9 +13,11 @@ import {
 import TexttoSpeech from "./components/TexttoSpeech/TexttoSpeech";
 import SpeechtoText from "./components/SpeechtoText/SpeechtoText";
 
+export const UserTextData = createContext([]);
 function App() {
-  return (
+  const [allText, setAllText] = useState([]);
 
+  return (
     <Router>
       <main className="vh-100 bg-secondary">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -45,20 +47,22 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/texttospeech">
-            <TexttoSpeech />
-          </Route>
+          <UserTextData.Provider value={UserTextData}>
+            <Route path="/texttospeech">
+              <TexttoSpeech />
+            </Route>
 
-          <Route path="/speechtotext">
-            <SpeechtoText />
-          </Route>
+            <Route path="/speechtotext">
+              <SpeechtoText />
+            </Route>
 
-          <Route path="/home">
-            <Home />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
+            <Route path="/home">
+              <Home />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </UserTextData.Provider>
         </Switch>
       </main>
     </Router>

@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useSpeechRecognition } from 'react-speech-kit';
+import { UserTextData } from '../../App';
 
 const SpeechtoText = () => {
+    const {textList, setTextList} = useContext(UserTextData);
     const [value, setValue] = useState('');
     const { listen, listening, stop } = useSpeechRecognition({
         onResult: (result) => {
